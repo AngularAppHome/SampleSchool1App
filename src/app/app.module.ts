@@ -5,6 +5,8 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
+import {HttpClientModule} from '@angular/common/http';
+
 import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
@@ -48,9 +50,10 @@ const appRoutes: Routes = [
         appRoutes,
         { enableTracing: true } // <-- debugging purposes only
       ),
-      MDBBootstrapModule.forRoot(),
+    MDBBootstrapModule.forRoot(),
     BrowserModule,
     FormsModule,
+    HttpClientModule,
     HttpModule
   ],
   providers: [],

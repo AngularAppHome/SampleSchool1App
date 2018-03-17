@@ -1,3 +1,33 @@
-<p>
-  student works!
-</p>
+
+<div class="container">
+  <h3>Student List</h3>
+   <table class="table table-condensed">
+     <thead>
+       <!-- <tr>
+         <td>    </td>
+         <td>     </td>
+         <td>     </td>
+         <td>     </td>
+         <td>  <a (click)="ShowRegForm(e)">Add New</a></td>
+       </tr> -->
+       <tr>
+         <th>RollNo</th>
+         <th>Name</th>
+         <th>Class</th>
+         <th>Age</th>
+         <th>SchoolName</th>
+       </tr>
+     </thead>
+     <tbody>
+       <tr class="success" *ngFor="let e of studentList ">
+         <td>{{e.RollNo}}</td>
+         <td>{{e.Name}}</td>
+         <td>{{e.Class}}</td>
+         <td>{{e.Age}}</td>
+         <td>{{e.SchoolName}}</td>
+         <!-- <td><a (click)="ShowRegForm(e)">Edit</a></td>
+         <td><a (click)="ShowRegFormForDelete(e)">Delete</a></td> -->
+       </tr>
+     </tbody>
+   </table>
+ </div>

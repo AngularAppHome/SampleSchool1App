@@ -1,16 +1,31 @@
 import { Component, OnInit } from '@angular/core';
+import { StudentdataService } from 'app/student/studentdata.service';
+
+import {NgForm} from '@angular/forms'
+import {FormsModule} from '@angular/forms'
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/do';
+import 'rxjs/add/operator/filter';
+import 'rxjs/add/operator/map';
+import { Student } from 'shared/student.model';
 
 @Component({
   selector: 'app-student',
   templateUrl: './student.component.html',
-  styleUrls: ['./student.component.css']
+  styleUrls: ['./student.component.css'],
+  providers:[StudentdataService]
 })
 export class StudentComponent implements OnInit {
-
-  constructor() { }
+  
+  studentList : Student[];
+  constructor(private studentService: StudentdataService) { }
 
   ngOnInit() {
-    
+      this.studentService.getStudent().subscribe((tempdate) => {
+      this.studentList = tempdate;
+  }), err => {
+      console.log(err);
+  }
   }
 
 }
