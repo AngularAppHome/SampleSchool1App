@@ -4,26 +4,19 @@ import { HttpClient,HttpParams,HttpHeaders } from '@angular/common/http';
 import { Student } from 'shared/student.model';
 import { ROOT_URL } from 'shared/Config';
 
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/catch';
-import 'rxjs/add/operator/retry';
-import 'rxjs/add/observable/of';
-import 'rxjs/Rx';
-
-
-
-
 
 @Injectable()
 export class StudentdataService {
+  private _url: string = "assets/stubby/student.json";
 
   students: Observable < Student[] > ;
   newstudent: Observable < Student > ;
+
   constructor(private http: HttpClient) {
   }
-  getStudent() {
-      return this.http.get < Student[] > (ROOT_URL + '/student.json')
-
+ 
+  getStudent(): Observable<Student[]>{
+    return this.http.get<Student[]>(this._url);
   }
 
 }
