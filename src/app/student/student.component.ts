@@ -4,9 +4,6 @@ import { StudentdataService } from 'app/student/studentdata.service';
 import {NgForm} from '@angular/forms'
 import {FormsModule} from '@angular/forms'
 import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/do';
-import 'rxjs/add/operator/filter';
-import 'rxjs/add/operator/map';
 import { Student } from 'shared/student.model';
 
 @Component({
@@ -21,11 +18,7 @@ export class StudentComponent implements OnInit {
   constructor(private studentService: StudentdataService) { }
 
   ngOnInit() {
-      this.studentService.getStudent().subscribe((tempdate) => {
-      this.studentList = tempdate;
-  }), err => {
-      console.log(err);
+      this.studentService.getStudent().subscribe(data=>this.studentList = data);
   }
-  }
-
+  
 }
