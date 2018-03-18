@@ -1,7 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
+
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+
+import {HttpClientModule} from '@angular/common/http';
 
 import { RouterModule, Routes } from '@angular/router';
 
@@ -46,8 +50,10 @@ const appRoutes: Routes = [
         appRoutes,
         { enableTracing: true } // <-- debugging purposes only
       ),
+    MDBBootstrapModule.forRoot(),
     BrowserModule,
     FormsModule,
+    HttpClientModule,
     HttpModule
   ],
   providers: [],
