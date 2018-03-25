@@ -5,6 +5,8 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
+import {HttpClientModule} from '@angular/common/http';
+
 import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
@@ -15,6 +17,7 @@ import { StaffComponent } from './staff/staff.component';
 import { AssetComponent } from './asset/asset.component';
 import { DashboardComponent } from 'app/dashboard/dashboard.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 
 const appRoutes: Routes = [
@@ -44,13 +47,15 @@ const appRoutes: Routes = [
     PageNotFoundComponent
   ],
   imports: [
+    NgxPaginationModule,
       RouterModule.forRoot(
         appRoutes,
         { enableTracing: true } // <-- debugging purposes only
       ),
-      MDBBootstrapModule.forRoot(),
+     
     BrowserModule,
     FormsModule,
+    HttpClientModule,
     HttpModule
   ],
   providers: [],
