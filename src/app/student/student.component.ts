@@ -45,7 +45,9 @@ export class StudentComponent implements OnInit {
   onSubmit(f: NgForm) {
     if (f.value.Id == null) {
       this.studentService.saveStudent(f.value)
+       
         .subscribe(data =>{
+          f.reset();
           this.studentService.getStudent().subscribe(data=>this.studentList = data);
           console.log('New Record Added Succcessfully', 'Student Added');
         })
@@ -59,6 +61,8 @@ export class StudentComponent implements OnInit {
     }
 
   }
+
+ 
 
   showForEdit(std: Student) {
     this.studentService.selectedStudent = Object.assign({}, std);
