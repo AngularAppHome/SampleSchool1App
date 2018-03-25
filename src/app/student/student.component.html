@@ -1,7 +1,7 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-lg-6">
+        <div class="col-lg-8">
                 <h3>Student List</h3>
                 <table class="table table-condensed">
                   <thead>
@@ -14,7 +14,7 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr class="success" *ngFor="let e of studentList | paginate: { itemsPerPage: 5, currentPage: p }">
+                    <tr class="success" *ngFor="let e of studentList | paginate: { itemsPerPage: 8, currentPage: p }">
                       <td>{{e.Id}}</td>
                       <td>{{e.Name}}</td>
                       <td>{{e.Class}}</td>
@@ -39,17 +39,64 @@
                  </nav>
         </div>
       
-        <div class="col-lg-6">
-        <form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>
+        <div class="col-lg-4">
+            <!--Contact Form-->
+            <form #f="ngForm" (ngSubmit)="onSubmit(f);f.reset();" novalidate>
+
+                    <p class="h5 text-center mb-4">Save Student Detail</p>
+                
+                    <div class="md-form">
+                        <i class="fa fa-user prefix grey-text"></i>
+                        <input type="text" id="form3" name="Name"class="form-control" mdbActive placeholder="Your name" ngModel>
+                        <label for="form3"></label>
+                    </div>
+                
+                    <div class="md-form">
+                        <i class="fa fa-tag prefix grey-text"></i>
+                        <input type="text" id="form2" name="Class" class="form-control" mdbActive placeholder="Class" ngModel>
+                        <label for="form2"></label>
+                    </div>
+                
+                    <div class="md-form">
+                        <i class="fa fa-tag prefix grey-text"></i>
+                        <input type="text" id="form32" name="Age"class="form-control" mdbActive placeholder="Age" ngModel>
+                        <label for="form34"></label>
+                    </div>
+
+                    <div class="md-form">
+                            <i class="fa fa-tag prefix grey-text"></i>
+                            <input type="text" id="form32" name="Section" class="form-control" mdbActive placeholder="Section" ngModel>
+                            <label for="form34"></label>
+                    </div>
+
+                    <div class="md-form">
+                            <i class="fa fa-pencil prefix grey-text"></i>
+                            <textarea type="text" id="form8" name="Address" class="md-textarea" style="height: 100px" mdbActive placeholder="Address" ngModel></textarea>
+                            <label for="form8"></label>
+                        </div>
+                
+                    <div class="text-center">
+                        <button class="btn btn-unique waves-light" mdbRippleRadius>Save <i class="fa fa-paper-plane-o ml-1"></i></button>
+                    </div>
+                
+                </form>
+    <!--Contact Form-->
+        <!-- <form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>
                 <input name="Name" placeholder="Name" ngModel>
                 <input name="Class" placeholder="Class" ngModel>
                 <input name="Age" placeholder="Age" ngModel>
                 <input name="Section" placeholder="Section" ngModel>
                 <input name="Address" placeholder="Address" ngModel>
                 <button>Submit</button>
-        </form>
+        </form> -->
         </div>
     </div>
  
  </div>  
 
+
+
+
+ 
+
+            
