@@ -14,7 +14,6 @@ export class StudentdataService {
   private _usrurl :string = "http://localhost:50001/api/user";
   private _stdpost : string = "http://localhost:50001/api/students";
 
-  selectedStudent:Student;
   // students: Observable < Student[] > ;
   // newstudent: Observable < Student > ;
 
@@ -48,6 +47,7 @@ export class StudentdataService {
     return this.Http.put('http://localhost:50001/api/students' + id,
       body,requestOptions).map(res => res.json());
   }
+
   deleteStudent(id: number) {
     return this.Http.delete('http://localhost:50001/api/students' + id).map(res => res.json());
   }

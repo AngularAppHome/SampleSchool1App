@@ -7,8 +7,6 @@ import { Observable } from 'rxjs/Observable';
 import { Student } from 'shared/student.model';
 import { ISubscription } from 'rxjs/Subscription';
 import { Console } from '@angular/core/src/console';
- 
-
 
 @Component({
   selector: 'app-student',
@@ -20,15 +18,14 @@ import { Console } from '@angular/core/src/console';
 export class StudentComponent implements OnInit {
   
   studentList : Student[];
+  selectedStudent : any = {};
 
   p: number = 1;
  
-
   selected: Student;
 
   userList : User[];
   constructor(private studentService: StudentdataService) { }
- 
 
   ngOnInit() {
     debugger
@@ -43,9 +40,9 @@ export class StudentComponent implements OnInit {
   // }
 
   onSubmit(f: NgForm) {
+    debugger
     if (f.value.Id == null) {
       this.studentService.saveStudent(f.value)
-       
         .subscribe(data =>{
           f.reset();
           this.studentService.getStudent().subscribe(data=>this.studentList = data);
@@ -53,19 +50,18 @@ export class StudentComponent implements OnInit {
         })
     }
     else {
+      debugger
       this.studentService.updateStudent(f.value.Id, f.value)
       .subscribe(data => {
         this.studentService.getStudent().subscribe(data=>this.studentList = data);
-        console.log('Record Updated Successfully!', 'Employee Register');
+        console.log('Record Updated Successfully!', 'Selected Student Modified');
       });
     }
-
   }
 
- 
 
   showForEdit(std: Student) {
-    this.studentService.selectedStudent = Object.assign({}, std);
+    this.selectedStudent = Object.assign({}, std);
   }
 
   onDelete(id: number) {
