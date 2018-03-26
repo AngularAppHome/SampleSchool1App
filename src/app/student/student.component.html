@@ -21,11 +21,14 @@
                       <td>{{e.Age}}</td>
                       <td>{{e.Section}}</td>
                       <td>{{e.Address}}</td>
-                      <td (click)="showForEdit(f)"><a class="fa-fa-edit">Edit</a></td>
+                      <td (click)="showForEdit(e)"><a class="teal-text"><i class="fa fa-pencil"></i></a></td>
+                      <td (click)="onDelete(e.Id)"><a class="red-text"><i class="fa fa-times"></i></a></td>
                       <!-- <td><a (click)="ShowRegForm(e)">Edit</a></td>
                       <td><a (click)="ShowRegFormForDelete(e)">Delete</a></td> -->
                      </tr>
                   
+                
+              
                         
                    
                   </tbody>  
@@ -47,36 +50,36 @@
                 
                     <div class="md-form">
                         <i class="fa fa-user prefix grey-text"></i>
-                        <input type="text" id="form3" name="Name"class="form-control" mdbActive placeholder="Your name" ngModel>
+                        <input type="text" id="form3" name="Name"class="form-control" mdbActive placeholder="Your name"  [(ngModel)]="selectedStudent.Name">
                         <label for="form3"></label>
                     </div>
                 
                     <div class="md-form">
                         <i class="fa fa-tag prefix grey-text"></i>
-                        <input type="text" id="form2" name="Class" class="form-control" mdbActive placeholder="Class" ngModel>
+                        <input type="text" id="form2" name="Class" class="form-control" mdbActive placeholder="Class"  [(ngModel)]="selectedStudent.Class">
                         <label for="form2"></label>
                     </div>
                 
                     <div class="md-form">
                         <i class="fa fa-tag prefix grey-text"></i>
-                        <input type="text" id="form32" name="Age"class="form-control" mdbActive placeholder="Age" ngModel>
+                        <input type="text" id="form32" name="Age"class="form-control" mdbActive placeholder="Age"  [(ngModel)]="selectedStudent.Age">
                         <label for="form34"></label>
                     </div>
 
                     <div class="md-form">
                             <i class="fa fa-tag prefix grey-text"></i>
-                            <input type="text" id="form32" name="Section" class="form-control" mdbActive placeholder="Section" ngModel>
+                            <input type="text" id="form32" name="Section" class="form-control" mdbActive placeholder="Section"  [(ngModel)]="selectedStudent.Section">
                             <label for="form34"></label>
                     </div>
 
                     <div class="md-form">
                             <i class="fa fa-pencil prefix grey-text"></i>
-                            <textarea type="text" id="form8" name="Address" class="md-textarea" style="height: 100px" mdbActive placeholder="Address" ngModel></textarea>
+                            <textarea type="text" id="form8" name="Address" class="md-textarea" style="height: 100px" mdbActive placeholder="Address" [(ngModel)]="selectedStudent.Address"></textarea>
                             <label for="form8"></label>
                         </div>
                 
                     <div class="text-center">
-                        <button class="btn btn-unique waves-light" mdbRippleRadius>Save <i class="fa fa-paper-plane-o ml-1"></i></button>
+                        <button class="btn btn-unique waves-light" mdbRippleRadius (click)="resetForm(f)">Save <i class="fa fa-paper-plane-o ml-1"></i></button>
                     </div>
                 
                 </form>
