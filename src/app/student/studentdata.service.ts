@@ -12,7 +12,6 @@ export class StudentdataService {
   private _url: string = "http://localhost:50001/api/students";
 
   private _usrurl :string = "http://localhost:50001/api/user";
-  private _stdpost : string = "http://localhost:50001/api/students";
 
   // students: Observable < Student[] > ;
   // newstudent: Observable < Student > ;
@@ -40,16 +39,16 @@ export class StudentdataService {
   getStudent(): Observable<Student[]>{
     return this.http.get<Student[]>(this._url);
   }
-  updateStudent(id,std){
+  updateStudent(std){
     var body = JSON.stringify(std);
     var headerOptions = new Headers({ 'Content-Type': 'application/json' });
     var requestOptions = new RequestOptions({ method: RequestMethod.Put, headers: headerOptions });
-    return this.Http.put('http://localhost:50001/api/students' + id,
+    return this.Http.put('http://localhost:50001/api/students',
       body,requestOptions).map(res => res.json());
   }
 
   deleteStudent(id: number) {
-    return this.Http.delete('http://localhost:50001/api/students' + id).map(res => res.json());
+    return this.Http.delete('http://localhost:50001/api/students/' + id).map(res => res.json());
   }
 
 
