@@ -47,7 +47,7 @@
             <form #f="ngForm" (ngSubmit)="onSubmit(f);f.reset();" novalidate>
 
                     <p class="h5 text-center mb-4">Save Student Detail</p>
-                
+                    <input type="hidden" id="form3" name="Id"class="form-control" mdbActive  [(ngModel)]="selectedStudent.Id">
                     <div class="md-form">
                         <i class="fa fa-user prefix grey-text"></i>
                         <input type="text" id="form3" name="Name"class="form-control" mdbActive placeholder="Your name"  [(ngModel)]="selectedStudent.Name">

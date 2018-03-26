@@ -29,10 +29,17 @@ export class StudentComponent implements OnInit {
 
   ngOnInit() {
     debugger
-     this.studentService.getStudent().subscribe(data=>this.studentList = data);
-     this.studentService.getUser().subscribe(data=>this.userList = data);
-     console.log(this.userList);
+    this.getAllStudent();
+    this.studentService.getUser().subscribe(data=>this.userList = data);
+    console.log(this.userList);
   }
+  getAllStudent(){
+    this.studentService
+    .getStudent()
+    .subscribe((data:Student[])=>this.studentList = data,
+    () => console.log("getAllStudent() complete from init"));
+  }
+ 
   // onSubmit(f:NgForm){
   //   debugger 
   //   console.log(f.value);
@@ -45,15 +52,16 @@ export class StudentComponent implements OnInit {
       this.studentService.saveStudent(f.value)
         .subscribe(data =>{
           f.reset();
-          this.studentService.getStudent().subscribe(data=>this.studentList = data);
+          this.getAllStudent();
           console.log('New Record Added Succcessfully', 'Student Added');
         })
     }
     else {
       debugger
-      this.studentService.updateStudent(f.value.Id, f.value)
+      this.studentService.updateStudent(f.value)
       .subscribe(data => {
-        this.studentService.getStudent().subscribe(data=>this.studentList = data);
+        f.reset();
+        this.getAllStudent();
         console.log('Record Updated Successfully!', 'Selected Student Modified');
       });
     }
@@ -76,4 +84,12 @@ export class StudentComponent implements OnInit {
   // ngOnDestroy() {
   //   this.subscription.unsubscribe();
   // } 
+}
+function handleException(error: any) {
+  // log error
+  let errorMsg = error.message || `Problem accessing the data!`
+  console.error(errorMsg);
+
+  // throw an application level error
+  return Observable.throw(errorMsg);
 }
