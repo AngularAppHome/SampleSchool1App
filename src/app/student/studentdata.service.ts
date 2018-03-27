@@ -13,15 +13,16 @@ export class StudentdataService {
 
   private _usrurl :string = "http://localhost:50001/api/user";
 
-  // students: Observable < Student[] > ;
+   //studentList: Observable < Student[] > ;
   // newstudent: Observable < Student > ;
+  studentList : Student[];
 
   constructor(private http: HttpClient , private Http:Http) {
   }
 
-  getUser():Observable<User[]>{
-      return this.http.get<User[]>(this._usrurl);
-  }
+  // getUser():Observable<User[]>{
+  //     return this.http.get<User[]>(this._usrurl);
+  // }
 
   // saveStudent(data:Student){
   //   debugger
@@ -47,16 +48,17 @@ export class StudentdataService {
       body,requestOptions).map(res => res.json());
   }
 
-  deleteStudent(id: number) {
+  deleteStudent(id: number):Observable<{}> {
     return this.Http.delete('http://localhost:50001/api/students/' + id).map(res => res.json());
   }
+ 
 
 
 
 }
-export class User{
-id : number;
-name : string;
-email : string;
-password: string;
-}
+// export class User{
+// id : number;
+// name : string;
+// email : string;
+// password: string;
+// }

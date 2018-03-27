@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { StudentdataService, User } from 'app/student/studentdata.service';
+
+import { StudentdataService } from 'app/student/studentdata.service';
 
 import {NgForm} from '@angular/forms'
 import {FormsModule} from '@angular/forms'
@@ -24,15 +25,13 @@ export class StudentComponent implements OnInit {
  
   selected: Student;
 
-  userList : User[];
   constructor(private studentService: StudentdataService) { }
 
   ngOnInit() {
     debugger
     this.getAllStudent();
-    this.studentService.getUser().subscribe(data=>this.userList = data);
-    console.log(this.userList);
   }
+
   getAllStudent(){
     this.studentService
     .getStudent()
@@ -51,8 +50,7 @@ export class StudentComponent implements OnInit {
     if (f.value.Id == null) {
       this.studentService.saveStudent(f.value)
         .subscribe(data =>{
-          f.reset();
-          this.getAllStudent();
+          this.studentList.push(data);
           console.log('New Record Added Succcessfully', 'Student Added');
         })
     }
@@ -60,7 +58,7 @@ export class StudentComponent implements OnInit {
       debugger
       this.studentService.updateStudent(f.value)
       .subscribe(data => {
-        f.reset();
+        this.studentList.push(data);
         this.getAllStudent();
         console.log('Record Updated Successfully!', 'Selected Student Modified');
       });
@@ -84,12 +82,4 @@ export class StudentComponent implements OnInit {
   // ngOnDestroy() {
   //   this.subscription.unsubscribe();
   // } 
-}
-function handleException(error: any) {
-  // log error
-  let errorMsg = error.message || `Problem accessing the data!`
-  console.error(errorMsg);
-
-  // throw an application level error
-  return Observable.throw(errorMsg);
 }
