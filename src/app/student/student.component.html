@@ -23,7 +23,7 @@
                 <td>{{e.Age}}</td>
                 <td>{{e.Section}}</td>
                 <td>{{e.Address}}</td>
-                <td (click)="showForEdit(e)"><a class="teal-text"><i class="fa fa-pencil"></i></a></td>
+                <td (click)="showForEdit(e)"><a class="teal-text" (click)="form.show()"><i class="fa fa-pencil"></i></a></td>
                 <td (click)="onDelete(e.Id)"><a class="red-text"><i class="fa fa-times"></i></a></td>
                 <!-- <td><a (click)="ShowRegForm(e)">Edit</a></td>
                 <td><a (click)="ShowRegFormForDelete(e)">Delete</a></td> -->
