@@ -74,7 +74,7 @@ export class StudentComponent implements OnInit {
     if (confirm('Are you sure to delete this record ?') == true) {
       this.studentService.deleteStudent(id)
       .subscribe(x => {
-        this.studentService.getStudent();
+        this.getAllStudent();
         console.log("Deleted Successfully","Student from list");
       })
     }
