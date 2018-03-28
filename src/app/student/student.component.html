@@ -4,15 +4,17 @@
         <button type="button" class="btn btn-primary waves-light" (click)="form.show()" mdbRippleRadius><i class="fa fa-plus-square" aria-hidden="true"></i> Add new Student</button>
     </div>
     <div class="row align-center">
-        <h3>Student List</h3>
+        <h4><strong><span style="color:red">S</span><span style="color:black">tudent List</span></strong></h4>
         <table class="table table-condensed">
-            <thead>
-            <tr>
+            <thead class="mdb-color darken-3">
+            <tr class="text-white">
                 <th>RollNo</th>
                 <th>Name</th>
                 <th>Class</th>
                 <th>Age</th>
-                <th>SchoolName</th>
+                <th>Section</th>
+                <th>Address</th>
+                <th></th>
             </tr>
             </thead>
             <tbody>
@@ -23,8 +25,8 @@
                 <td>{{e.Age}}</td>
                 <td>{{e.Section}}</td>
                 <td>{{e.Address}}</td>
-                <td (click)="showForEdit(e)"><a class="teal-text" (click)="form.show()"><i class="fa fa-pencil"></i></a></td>
-                <td (click)="onDelete(e.Id)"><a class="red-text"><i class="fa fa-times"></i></a></td>
+                <td (click)="showForEdit(e)"><a class="teal-text" (click)="form.show()"><i class="fa fa-pencil"></i></a>
+                <a class="red-text" (click)="onDelete(e.Id)"><i class="fa fa-times"></i></a></td>
                 <!-- <td><a (click)="ShowRegForm(e)">Edit</a></td>
                 <td><a (click)="ShowRegFormForDelete(e)">Delete</a></td> -->
                 </tr>
@@ -52,7 +54,7 @@
             <!--Header-->
             <div class="modal-header light-blue darken-3 white-text">
                 <h4 class="title"><i class="fa fa-pencil"></i>Save Student Detail</h4>
-                <button type="button" class="close waves-effect waves-light" data-dismiss="modal" aria-label="Close" (click)="form.hide()">
+                <button type="button" class="close waves-effect waves-light" data-dismiss="modal" aria-label="Close" (click)="form.hide();f.reset();">
                     <span aria-hidden="true">×</span>
                 </button>
             </div>
