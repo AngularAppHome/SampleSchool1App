@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { StudentdataService } from 'app/student/studentdata.service';
+import { StudentdataService, User } from 'app/student/studentdata.service';
 
 import {NgForm} from '@angular/forms'
 import {FormsModule} from '@angular/forms'
@@ -15,10 +15,15 @@ import { Student } from 'shared/student.model';
 export class StudentComponent implements OnInit {
   
   studentList : Student[];
+  userList:User[];
   constructor(private studentService: StudentdataService) { }
 
   ngOnInit() {
-      this.studentService.getStudent().subscribe(data=>this.studentList = data);
+
+
+    console.log(this.userList);
+      this.studentService.getUser().subscribe(data=>this.userList=data)
+      console.log(this.userList);
   }
   
 }
